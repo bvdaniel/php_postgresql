@@ -3,7 +3,7 @@
 function conn(){
     $hostname = "localhost";
     $usuariodb = "root";
-    $passworddb = "8a8nkh3rr";
+    $passworddb = "*******";
     $dbname = "REGISTRO";
 
         //Genera conexión con servidor
