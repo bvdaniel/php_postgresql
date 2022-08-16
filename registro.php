@@ -1,8 +1,7 @@
 <?php
-include_once('db.php');
 //Recibo datos de formulario
 $nombres=$_POST['nombres'];
-$apellidos=$_POST['apelllidos'];
+$apellidos=$_POST['apellidos'];
 $direccion=$_POST['direccion'];
 $telefono=$_POST['telefono'];
 $usuario=$_POST['usuario'];
@@ -10,9 +9,15 @@ $clave=$_POST['clave'];
 echo "Los datos son los siguientes: <br>";
 echo "$nombres, $apellidos, $direccion, $telefono, $usuario, $clave";
 
-    $conectar=conn();
-    $sql="INSERT INTO REGISTRO
-    VALUES('$nombres', '$apellidos', '$direccion', '$telefono', '$usuario', '$clave')";
-    $result = mysqli_query($conectar, $sql)or trigger_error("Query FAIled! SQL- Error".mysqli_error($conectar));
-    echo "$sql";
+$hostname = "10.128.0.6";
+$usuariodb = "postgres";
+$passworddb = "123";
+$dbname = "registro";
+try{
+    $myPDO = new PDO("pgsql:host= $hostname; dbname=$dbname", $usuariodb, $passworddb);
+    $sql_query = "INSERT INTO $dbname VALUES('$nombres', '$apellidos', '$direccion', '$telefono', '$usuario', '$clave')";
+    $myPDO->query($sql_query);
+}catch(PDOException $e){
+    echo $e->getMessage();
+}
 ?>
