@@ -11,7 +11,6 @@ echo "$nombres, $apellidos, $direccion, $telefono, $usuario, $clave";
 
 $hostname = "10.128.0.6";
 $usuariodb = "postgres";
-$passworddb = "123";
 $dbname = "registro";
 try{
     $myPDO = new PDO("pgsql:host= $hostname; dbname=$dbname", $usuariodb, $passworddb);
